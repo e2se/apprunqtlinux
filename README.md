@@ -2,9 +2,11 @@
 
 Tiny AppRun launcher for AppImage and the runtime `AppImage/type2-runtime`.
 
-It relies on `/proc/self/exe` magic symbolic link resolved path and fixes `argv[0]` with the mount absolute path.
+I used this to fix `argv[0]` when using `conda-forge::qt6-main` recent builds. 
 
-This to meet the Qt6 `QCoreApplication::applicationDirPath` logic to locate `qt.conf`.
+It relies on `/proc/self/exe`, `getauxval(AT_EXECFN)`, `getenv("APPDIR")` for path resolving and fixes `argv[0]` with the mount absolute path.
+
+This to meet the Qt6 logic to locate `qt.conf`.
 
 ## Usage
 ```
